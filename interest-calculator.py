@@ -12,7 +12,11 @@ def calculate_months(amount: int, start_kapital: int, gehalt: int):
     data = []
 
     for i in range(amount):
-        interest_this_month = investment * INTEREST_PM
+        # Zinsen auf das Gesamtvermöfen (Investment + bisherige Zinsen)
+        current_total = investment + accumulated_interest
+        interest_this_month = current_total * INTEREST_PM
+
+        # Sparrate addieren
         investment += gehalt
         accumulated_interest += interest_this_month
         net_worth = investment + accumulated_interest
@@ -46,6 +50,7 @@ def streamlit_ui():
         start_kapital = st.slider("Start Kapital", min_value=0, max_value=100000, value=10000)
         gehalt = st.slider("Sparrate", min_value=0, max_value=10000, value=1800)
         monate = st.slider("Anzahl Monate", min_value=1, max_value=300, value=12)
+        st.write(f"{round(monate / 12, 1)} Jahre")
 
     df = calculate_months(monate, start_kapital, gehalt)
 
