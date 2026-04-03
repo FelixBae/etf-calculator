@@ -1,11 +1,12 @@
 
 To install
 ```sh
-pip install -r requirements.txt
+uv venv
+uv synv
 ```
 
 
 To execute run
 ```sh
-streamlit run interest-calculator.py
+uv run streamlit run main.py
 ```
