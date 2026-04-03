@@ -1,11 +1,9 @@
 import streamlit as st
 import pandas as pd
 
-# 💰 Konstante Parameter
 INTEREST_PA = 0.063  # Jahreszins
 INTEREST_PM = INTEREST_PA / 12  # Monatszins
 
-# 📈 Berechnungsfunktion
 def calculate_months(amount: int, start_kapital: int, gehalt: int):
     investment = start_kapital
     accumulated_interest = 0
@@ -31,7 +29,7 @@ def calculate_months(amount: int, start_kapital: int, gehalt: int):
 
     return pd.DataFrame(data)
 
-# 🎨 Streamlit UI
+
 def streamlit_ui():
     st.set_page_config(
         layout="wide",
@@ -62,6 +60,3 @@ def streamlit_ui():
 
     st.dataframe(df)
 
-# 🚀 Startpunkt
-if __name__ == "__main__":
-    streamlit_ui()
