@@ -2,7 +2,7 @@
 To install
 ```sh
 uv venv
-uv synv
+uv sync
 ```
 
 
