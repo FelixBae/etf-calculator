@@ -1,7 +1,6 @@
 
 To install
 ```sh
-uv venv
 uv sync
 ```
 
