@@ -30,7 +30,7 @@ def calculate_months(amount: int, start_kapital: int, gehalt: int):
     return pd.DataFrame(data)
 
 
-def streamlit_ui():
+def interest_calculator_ui():
     st.set_page_config(
         layout="wide",
         page_title="ETF-Rechner",
