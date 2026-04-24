@@ -3,7 +3,7 @@ from interest_calculator import interest_calculator_ui
 
 
 def main():
-    # interest_calculator_ui()
+    interest_calculator_ui()
     depot_analysis_ui()
 
 

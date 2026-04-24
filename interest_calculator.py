@@ -20,11 +20,11 @@ def calculate_months(amount: int, start_kapital: int, gehalt: int):
         net_worth = investment + accumulated_interest
 
         data.append({
-            "Monat": i + 1,
-            "Investiert": investment,
-            "Zinsen (Monat)": interest_this_month,
-            "Zinsen (Gesamt)": accumulated_interest,
-            "Vermögen": net_worth
+            "Month": i + 1,
+            "Invested": investment,
+            "Interest (Month)": interest_this_month,
+            "Interest (All)": accumulated_interest,
+            "Net Worth": net_worth
         })
 
     return pd.DataFrame(data)
@@ -33,11 +33,11 @@ def calculate_months(amount: int, start_kapital: int, gehalt: int):
 def interest_calculator_ui():
     st.set_page_config(
         layout="wide",
-        page_title="ETF-Rechner",
+        page_title="ETF-Calculator",
         page_icon="📊"
     )
 
-    st.header("ETF-Rechner")
+    st.header("ETF-Calculator")
     st.divider()
     st.write("")
     st.write("")
@@ -45,15 +45,15 @@ def interest_calculator_ui():
 
     col1, col2 = st.columns([1, 2], gap="large")
     with col1:
-        start_kapital = st.slider("Start Kapital", min_value=0, max_value=100000, value=10000)
-        gehalt = st.slider("Sparrate", min_value=0, max_value=10000, value=1800)
-        monate = st.slider("Anzahl Monate", min_value=1, max_value=300, value=12)
-        st.write(f"{round(monate / 12, 1)} Jahre")
+        start_kapital = st.slider("Starting capital", min_value=0, max_value=100000, value=10000)
+        gehalt = st.slider("Savings Rate", min_value=0, max_value=10000, value=1800)
+        monate = st.slider("Months", min_value=1, max_value=300, value=12)
+        st.write(f"{round(monate / 12, 1)} Years")
 
     df = calculate_months(monate, start_kapital, gehalt)
 
     with col2:
-        st.line_chart(df.set_index("Monat")[["Vermögen", "Investiert", "Zinsen (Gesamt)"]])
+        st.line_chart(df.set_index("Month")[["Net Worth", "Invested", "Interest (All)"]])
         st.write("")
         st.write("")
         st.write("")
